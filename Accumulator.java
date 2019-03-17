@@ -44,8 +44,8 @@ public class Accumulator {
                work around the stumbling block, because
                the JVM
                knows the type of an element.
-               Java's instanceOf operator identifies the type
-               of an element to the JVM (compiler? JVM?).
+               Java's instanceof operator identifies the type
+               of an element to the JVM.
              */
 
 
@@ -81,16 +81,26 @@ public class Accumulator {
 
             /* 7. Stumbling block 2
                However, use of this operator alone is insufficient,
-               because the ___________ (compiler? JVM?)
+               because the JVM
                objects to the following code that adds use of
                the operator to the code from Stumbling block 0:
              */
 
-            // [code that illustrates the use of the operator]
-
+            // String result = "";
+            //
+	    // for( int el = 0; el < list.size(); el++) {
+	        // String newEl = (String) list.get(el);
+                // if(newEl.startsWith("pi")) result += // dummy for incremental development
+	        // newEl + " ";
+	    // }
+    
             /*
-             predicted error message:
-             actual error message:
+             predicted error message: Double cannot be cast to String
+
+             actual error message: Exception in thread "main" java.lang.ClassCastException: class java.lang.Double cannot be cast to class java.lang.String (java.lang.Double and java.lang.String are in module java.base of loader 'bootstrap')
+	at Accumulator.catElementsStartingWith(Accumulator.java:92)
+	at UserOfList.main(UserOfList.java:32)
+
              */
 
 
@@ -102,6 +112,15 @@ public class Accumulator {
 
             // [working code here, finally]
 
+	String result = "";
+        for( int el = 0; el < list.size(); el++) {
+	    if(list.get(el) instanceof String) {
+		String newEl = (String) list.get(el);
+                if(newEl.startsWith("pi")) result += // dummy for incremental development
+		   newEl + " ";
+	    }
+	}
+
         return result;
     }
 
@@ -110,8 +129,17 @@ public class Accumulator {
       @return a list of each of the Double elements
       from the \list whose value is "finite".
      */
-    // public static List_inArraySlots finites(
-        // List_inArraySlots list
-      // ) {
-    // }
+    public static List_inArraySlots finites(
+        List_inArraySlots list
+      ) {
+        List_inArraySlots result = new List_inArraySlots();
+        for( int el = 0; el < list.size(); el++) {
+	    if(list.get(el) instanceof Double) {
+		Double newEl = (Double) list.get(el);
+                if(!(newEl.isInfinite())) result.add(newEl);
+	    }
+	}
+
+        return result;
+    }
 }
