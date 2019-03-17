@@ -21,7 +21,7 @@ public class Accumulator {
   //     return result;
   // }
 
-/*
+/* 3. Stumbling block 0
  predicted error message: Object i does not have method startsWith
 
  actual error message: cannot find symbol
@@ -29,8 +29,8 @@ public class Accumulator {
  */
 
  /* 4.  Workaround 0
-    A programmer should expect to be able to work around the
-    stumbling block somehow, because
+    A programmer should expect there to be a way to 
+    work around the stumbling block, because
     the JVM knows the type of an element.
 
     Java's instanceOf operator identifies the type
@@ -54,4 +54,34 @@ public class Accumulator {
         // List_inArraySlots list
       // ) {
     // }
+
+
+
+
+/* 5.  Stumbling block 1
+   However, use of the operator alone is insufficient,
+   because the ___________ (compiler? JVM?)
+   objects to the following code that adds use of
+   the operator to the code from Stumbling block 0:
+ */
+
+   // [code that illustrates the use of the operator]
+
+   /*
+    predicted error message:
+    actual error message:
+   */
+
+
+/* 6. Workaround 1
+   Programmers use Java's _____________ operator
+   to tell the ___________ (compiler? JVM?)
+   that code uses a subclass's method on an object,
+   even though the reference to the object is stored
+   in a super-class variable.
+ */
+
+
+
+    
 }
